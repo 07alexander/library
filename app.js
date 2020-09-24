@@ -5,41 +5,37 @@ function Book(title, author, pages, read){
     this.author = author;
     this.pages = pages;
     this.read = read;
-    this.info = function(){
-        if(read)
-            return title + " by " + author + ", " + pages + " pages, " + "have read"
-        else
-            return title + " by " + author + ", " + pages + " pages, " + "not read yet"
-    }
 }
 
 function addBookToLibrary(){
+    let title = prompt("Please enter the book title...");
+    let author = prompt("Please enter the author of this book...");
+    let pages = prompt("How many pages does this book contain?");
+    let read = confirm("Have you read this book?\nPress OK for yes or Cancel for no...")
+    console.log(read);
+    let currentBook = new Book(title, author, pages, "unread")
+    if(read){
+        currentBook.read = "read"
+    }
 
+    myLibrary.push(currentBook);
+    drawTable();
 }
 
-const b1 = new Book('the hobbit', 'jrr', '232', true)
-const b2 = new Book('the hobbit', 'jrr', '232', true)
-
-myLibrary.push(b1);
-myLibrary.push(b2);
-
-
-let html = '<table>';
- html += '<tr>';
- for( let j in myLibrary[0] ) {
-  html += '<th>' + j + '</th>';
- }
- html += '</tr>';
- for( let i = 0; i < myLibrary.length; i++) {
-  html += '<tr>';
-  for( let j in myLibrary[i] ) {
-    html += '<td>' + myLibrary[i][j] + '</td>';
-  }
-  html += '</tr>';
- }
- html += '</table>';
- document.getElementById('container').innerHTML = html;
-
-
-
-//console.log(b1.info());
+function drawTable(){
+    let html = '<table>';
+    html += '<tr>';
+    for( let j in myLibrary[0] ) {
+    html += '<th>' + j + '</th>';
+    }
+    html += '</tr>';
+    for( let i = 0; i < myLibrary.length; i++) {
+    html += '<tr>';
+    for( let j in myLibrary[i] ) {
+        html += '<td>' + myLibrary[i][j] + '</td>';
+    }
+    html += '</tr>';
+    }
+    html += '</table>';
+    document.getElementById('container').innerHTML = html;
+}
