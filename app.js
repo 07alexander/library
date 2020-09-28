@@ -22,7 +22,6 @@ function addBookToLibrary(){
 
     save();
     display();
-
 }
  
 
@@ -46,22 +45,22 @@ function createBook(item){
     const title = document.createElement('div');
     const author = document.createElement('div');
     const pages = document.createElement('div');
-    const rdBTN = document.createElement('button');
-    const rmBTN = document.createElement('button');
+    const rdBTN = document.createElement('button'); //Read button
+    const rmBTN = document.createElement('button'); //Remove button
     
 
     book.classList.add('book');
     book.setAttribute('id', myLibrary.indexOf(item));
 
-    title.textContent = item.title;
+    title.textContent = "Title: " +  item.title;
     title.classList.add('title');
     book.appendChild(title);
 
-    author.textContent = item.author;
+    author.textContent = "Author: " + item.author;
     author.classList.add('author');
     book.appendChild(author);
 
-    pages.textContent = item.pages;
+    pages.textContent = "Pages: " + item.pages;
     pages.classList.add('pages');
     book.appendChild(pages);
 
